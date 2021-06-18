@@ -108,7 +108,7 @@ class FlutterPhoneState with WidgetsBindingObserver {
       }
 
       /// If no activity reported within 10 seconds, we'll cancel the call
-      await Future.delayed(Duration(seconds: 60));
+      await Future.delayed(Duration(seconds: 10));
 
       if (call.status == PhoneCallStatus.dialing) {
         _changeStatus(call, PhoneCallStatus.timedOut);

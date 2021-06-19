@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -110,7 +111,7 @@ class FlutterPhoneState with WidgetsBindingObserver {
       /// If no activity reported within 10 seconds, we'll cancel the call
       await Future.delayed(Duration(seconds: 10));
 
-      if (call.status == PhoneCallStatus.dialing) {
+      if (call.status == PhoneCallStatus.dialing && Platform.isIOS) {
         _changeStatus(call, PhoneCallStatus.timedOut);
       }
     } catch (e) {
